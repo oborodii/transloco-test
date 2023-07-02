@@ -1,1 +1,11 @@
-{}
+{
+  "user": {
+    "languageSwitcher": {
+      "select": {
+        "label": "Перемикач",
+        "label2": "2222222222222222222",
+        "title": ""
+      }
+    }
+  }
+}

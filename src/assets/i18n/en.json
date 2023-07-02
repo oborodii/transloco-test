@@ -1,1 +1,11 @@
-{}
+{
+  "user": {
+    "languageSwitcher": {
+      "select": {
+        "label": "Language Switcher",
+        "label2": "2222",
+        "title": "НЕМАЄ_ПЕРЕКЛАДУ"
+      }
+    }
+  }
+}

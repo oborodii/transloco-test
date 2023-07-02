@@ -1,0 +1,26 @@
+<ng-container *transloco="let t">
+  <div [title]="t('user.languageSwitcher.select.title')">
+    {{ test }}
+  </div>
+
+  <div *ngIf="user">
+    <pre>
+      user =
+      {{ user | json }}
+    </pre>
+  </div>
+
+  {{ t('user.languageSwitcher.select.title') }}
+
+  <mat-form-field appearance="fill">
+    <!-- language switcher -->
+    <mat-label>{{ t('user.languageSwitcher.select.label') }}</mat-label>
+    <mat-select [(value)]="selectedLanguage" class="mat-select">
+      <mat-option *ngFor="let language of availableLanguages"
+                  [value]="language"
+                  (click)="changeLanguage(language)">
+        {{ language.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-container>
