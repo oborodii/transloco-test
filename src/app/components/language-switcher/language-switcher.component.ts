@@ -14,8 +14,6 @@ import { LanguageService } from "../../servises/language.service";
 })
 export class LanguageSwitcherComponent implements OnInit {
 
-  test: string = '';
-
   get availableLanguages(): AvailableLanguage[] {
     return environment.transloco.availableLanguages;
   }
@@ -28,6 +26,8 @@ export class LanguageSwitcherComponent implements OnInit {
     this.languageService.selectedLanguage = value;
   }
 
+  test: string = '';
+
   user: any = {
     name: "Sasha",
     age: 22
@@ -36,14 +36,12 @@ export class LanguageSwitcherComponent implements OnInit {
 
   constructor(private translateService: TranslocoService,
               private languageService: LanguageService) {
-    console.log(`user =`);
-    console.log(this.user);
   }
 
 
   ngOnInit(): void {
-    this.init();
-    this.selectedLanguage = this.availableLanguages[0];
+    this.translateService.setDefaultLang(this.availableLanguages[0].code);
+    this.translateTestVariable();
   }
 
 
@@ -51,10 +49,11 @@ export class LanguageSwitcherComponent implements OnInit {
     this.languageService.changeLanguage(language);
   }
 
-  private init(): void {
+
+  private translateTestVariable(): void {
     this.translateService.selectTranslateObject('user')
       .subscribe(() => {
-        this.test = '2222' + this.translateService.translate('user.languageSwitcher.select.label4');
+        this.test = '2222 ' + this.translateService.translate('user.languageSwitcher.select.label');
       });
   }
 

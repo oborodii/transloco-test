@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { TranslocoService } from "@ngneat/transloco";
 
 import { environment } from "../../environments/environment";
-import { AvailableLanguage, AvailableLanguageCode } from "../types/environment.type";
+import { AvailableLanguage } from "../types/environment.type";
 
 
 @Injectable({
@@ -15,7 +15,7 @@ export class LanguageService {
     return environment.transloco.availableLanguages;
   }
 
-  selectedLanguage: AvailableLanguage = environment.transloco.availableLanguages[0];
+  selectedLanguage: AvailableLanguage = environment.transloco.availableLanguages[1];
 
 
   constructor(private translateService: TranslocoService) {
@@ -23,20 +23,13 @@ export class LanguageService {
 
 
   changeLanguage(language: AvailableLanguage): void {
-    this.setSelectedLangByCode(language.code);
-    this.translateService.setActiveLang(language.code);
-  }
-
-
-  private setSelectedLangByCode(langCode: AvailableLanguageCode): void {
     for (let i = 0; i < this.availableLanguages.length; i++) {
-      if (this.availableLanguages[i].code === langCode) {
+      if (this.availableLanguages[i].code === language.code) {
         this.selectedLanguage = this.availableLanguages[i];
         this.translateService.setActiveLang(this.selectedLanguage.code);
         break;
       }
     }
   }
-
 
 }
