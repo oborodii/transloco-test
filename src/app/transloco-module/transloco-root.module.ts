@@ -10,7 +10,7 @@ import {
   translocoConfig,
   TranslocoModule
 } from '@ngneat/transloco';
-import { environment } from "../environments/environment";
+import { environment } from "../../environments/environment";
 
 
 
